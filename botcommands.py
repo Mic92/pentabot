@@ -233,94 +233,37 @@ def serverinfo(self, mess, args):
 
 @botcmd
 @ignore_msg_from_self
-def ping6cider(self, mess, args):
+def ping6(self, mess, args):
     """
-    Zeige Informationen ueber den Server - cider.hq.c3d2.de
+    ping6 <zielhost>
     """
-    ping6cider = ''
     try:
-        ping6cider += os.popen('/sbin/ping6 -c4 cider.hq.c3d2.de  | /usr/bin/tail -2').read()
+        return subprocess.check_output(["ping6", "-c3", "--", args.strip()])
     except:
-        ping6cider += 'Sorry Dude'
-    return ('Info:\n' + ping6cider)
+        return "ping failed"
+
 
 @botcmd
 @ignore_msg_from_self
-def ping6flatbert(self, mess, args):
+def ping(self, mess, args):
     """
-    Zeige Informationen ueber den Server - flatbert.hq.c3d2.de
+    ping <zielhost>
     """
-    ping6flatbert = ''
     try:
-        ping6flatbert += os.popen('/sbin/ping6 -c4 flatbert.hq.c3d2.de  | /usr/bin/tail -2').read()
+        return subprocess.check_output(["ping", "-c3", "--", args.strip()])
     except:
-        ping6flatbert += 'Sorry Dude'
-    return ('Info:\n' + ping6flatbert)
+        return "ping failed"
 
 @botcmd
 @ignore_msg_from_self
-def ping6flatberthost(self, mess, args):
+def dig(self, mess, args):
     """
-    Zeige Informationen ueber den Server - flatberthost.hq.c3d2.de
+    dig <zielhost>
     """
-    ping6flatberthost = ''
     try:
-        ping6flatberthost += os.popen('/sbin/ping6 -c4 flatberthost.hq.c3d2.de  | /usr/bin/tail -2').read()
+        return subprocess.check_output(["dig", "+short", "ANY", args.strip()])
     except:
-        ping6flatberthost += 'Sorry Dude'
-    return ('Info:\n' + ping6flatberthost)
-
-@botcmd
-@ignore_msg_from_self
-def ping6beere(self, mess, args):
-    """
-    Zeige Informationen ueber den Server - beere.hq.c3d2.de
-    """
-    ping6beere = ''
-    try:
-        ping6beere += os.popen('/sbin/ping6 -c4 beere.hq.c3d2.de  | /usr/bin/tail -2').read()
-    except:
-        ping6beere += 'Sorry Dude'
-    return ('Info:\n' + ping6beere)
-
-@botcmd
-@ignore_msg_from_self
-def ping6ledbeere(self, mess, args):
-    """
-    Zeige Informationen ueber den Server - ledbeere.hq.c3d2.de
-    """
-    ping6ledbeere = ''
-    try:
-        ping6ledbeere += os.popen('/sbin/ping6 -c4 ledbeere.hq.c3d2.de  | /usr/bin/tail -2').read()
-    except:
-        ping6ledbeere += 'Sorry Dude'
-    return ('Info:\n' + ping6ledbeere)
-
-@botcmd
-@ignore_msg_from_self
-def ping6chaosbay(self, mess, args):
-    """
-    Zeige Informationen ueber den Server - chaosbay.hq.c3d2.de
-    """
-    ping6chaosbay = ''
-    try:
-        ping6chaosbay += os.popen('/sbin/ping6 -c4 chaosbay.hq.c3d2.de  | /usr/bin/tail -2').read()
-    except:
-        ping6chaosbay += 'Sorry Dude'
-    return ('Info:\n' + ping6chaosbay)
-
-@botcmd
-@ignore_msg_from_self
-def ping6knot(self, mess, args):
-    """
-    Zeige Informationen ueber den Server - knot.hq.c3d2.de
-    """
-    ping6knot = ''
-    try:
-        ping6knot += os.popen('/sbin/ping6 -c4 knot.hq.c3d2.de  | /usr/bin/tail -2').read()
-    except:
-        ping6knot += 'Sorry Dude'
-    return ('Info:\n' + ping6knot)
+        return "ping failed"
 
 @botcmd
 @ignore_msg_from_self
